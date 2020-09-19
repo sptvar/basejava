@@ -15,7 +15,7 @@ public class ArrayStorage {
     }
 
     private int getResumeIndex(String uuid){
-        for (int i = 0; i < lastIndex; i++){
+        for (int i = 0; i <= lastIndex; i++){
             Resume r = storage[i];
             if (uuid.equals(r.uuid)){
                 return i;
@@ -37,7 +37,9 @@ public class ArrayStorage {
         if (resumeIndex == -1) {
             return;
         }
-        System.arraycopy(storage, resumeIndex+1, storage, resumeIndex, lastIndex-resumeIndex-1);
+        for (int i = resumeIndex+1; i <= lastIndex; i++) {
+            storage[resumeIndex] = storage[resumeIndex+1];
+        }
         lastIndex--;
     }
 
@@ -45,7 +47,7 @@ public class ArrayStorage {
      * @return array, contains only Resumes in storage (without null)
      */
     Resume[] getAll() {
-        Resume[] result = new Resume[lastIndex-1];
+        Resume[] result = new Resume[lastIndex+1];
         if (lastIndex >= 0) System.arraycopy(storage, 0, result,0,lastIndex+1);
         return result;
     }
