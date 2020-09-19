@@ -37,9 +37,7 @@ public class ArrayStorage {
         if (resumeIndex == -1) {
             return;
         }
-        for (int i = resumeIndex; i < lastIndex - 1; i++){
-            storage[i] = storage[i+1];
-        }
+        System.arraycopy(storage, resumeIndex+1, storage, resumeIndex, lastIndex-resumeIndex-1);
         lastIndex--;
     }
 
@@ -48,9 +46,7 @@ public class ArrayStorage {
      */
     Resume[] getAll() {
         Resume[] result = new Resume[lastIndex-1];
-        for (int i = 0; i < lastIndex ; i++){
-            result[i] = storage[i];
-        }
+        if (lastIndex >= 0) System.arraycopy(storage, 0, result,0,lastIndex+1);
         return result;
     }
 
