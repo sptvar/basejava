@@ -6,7 +6,7 @@ public class ArrayStorage {
     Resume[] storage = new Resume[10000];
 
     void clear() {
-        for (int i = 0; i <= lastIndex; i++){
+        for (int i = 0; i <= lastIndex; i++) {
             storage[i] = null;
         }
         lastIndex = -1;
